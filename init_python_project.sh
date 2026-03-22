@@ -42,25 +42,52 @@ cat > pyproject.toml <<EOF
 [project]
 name = "$PROJECT_NAME"
 version = "0.1.0"
-description = "Hexagonal architecture service"
-requires-python = ">=3.12"
-dependencies = []
+description = "market price analysis system"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "numpy",
+    "fastapi",
+    "uvicorn[standard]",
+    "sqlalchemy>=2.0",
+    "asyncpg",
+    "httpx",
+    "pydantic>=2",
+    "python-dotenv",
+    "openai",
+]
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "pytest",
+    "hypothesis>=6.151.9",
+    "pytest-asyncio",
     "ruff",
     "mypy"
 ]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+
+[tool.mypy]
+python_version = "3.14"
+strict = true
 EOF
 
-# Makefile (automation best practice)
+# Makefile
 cat > Makefile <<'EOF'
+venv:
+	uv venv
+
 install:
 	uv sync
 
+install_dev:
+	uv sync --group dev
+
 run:
-	uv run python -m my_service.main
+	uv run uvicorn price.main:app --reload
 
 test:
 	uv run pytest
@@ -74,9 +101,26 @@ EOF
 
 # Optional .gitignore
 cat > .gitignore <<EOF
-.venv/
+# Python-generated files
 __pycache__/
-*.pyc
 uv.lock
+*.pyc
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# env
 .env
+
+# IDEs
+.idea/
+.vscode
+
+# Dev
+.hypothesis
 EOF
