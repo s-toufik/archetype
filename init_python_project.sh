@@ -3,7 +3,7 @@
 set -euo pipefail
 
 PROJECT_NAME=$1
-PACKAGE_NAME=$1
+PACKAGE_NAME=$2
 
 echo "Creating project: $PROJECT_NAME"
 
