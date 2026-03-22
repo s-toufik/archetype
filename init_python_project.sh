@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
+cd $1
+
 set -euo pipefail
 
-PROJECT_NAME=$1
-PACKAGE_NAME=$2
+PROJECT_NAME=$2
 
 echo "Creating project: $PROJECT_NAME"
 
@@ -13,13 +14,13 @@ cd "$PROJECT_NAME"
 
 # Core directories
 mkdir -p \
-  src/$PACKAGE_NAME/domain/models \
-  src/$PACKAGE_NAME/domain/services \
-  src/$PACKAGE_NAME/application/use_cases \
-  src/$PACKAGE_NAME/ports/inbound \
-  src/$PACKAGE_NAME/ports/outbound \
-  src/$PACKAGE_NAME/adapters/inbound \
-  src/$PACKAGE_NAME/adapters/outbound \
+  src/domain/models \
+  src/domain/services \
+  src/application/use_cases \
+  src/ports/inbound \
+  src/ports/outbound \
+  src/adapters/inbound \
+  src/adapters/outbound \
   tests \
   docker \
   scripts
@@ -28,9 +29,9 @@ mkdir -p \
 find src -type d -exec touch {}/__init__.py \;
 
 # Main entrypoint
-cat > src/$PACKAGE_NAME/main.py <<EOF
+cat > src/main.py <<EOF
 def main():
-    print("Hello from $PACKAGE_NAME")
+    print("Hello friend, happy coding")
 
 if __name__ == "__main__":
     main()
