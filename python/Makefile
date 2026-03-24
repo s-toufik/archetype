@@ -31,5 +31,9 @@ build:
 	uv build
 
 publish:
-    @echo "INFO: Make sure that UV_PUBLISH_TOKEN env variable is set"
+	@echo "INFO: Make sure that UV_PUBLISH_TOKEN env variable is set"
 	uv publish
+
+publish_dev:
+	UV_PUBLISH_TOKEN=$$UV_TEST_PUBLISH_TOKEN
+	uv publish --publish-url https://test.pypi.org/legacy/
