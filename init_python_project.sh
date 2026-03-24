@@ -42,19 +42,20 @@ cat > pyproject.toml <<EOF
 [project]
 name = "$PROJECT_NAME"
 version = "0.1.0"
-description = "market price analysis system"
+authors = [
+    { name="Toufik Saouchi", email="toufik.saouchi@gmail.com" },
+]
+description = "description"
 readme = "README.md"
 requires-python = ">=3.14"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
 dependencies = [
     "numpy",
-    "fastapi",
-    "uvicorn[standard]",
-    "sqlalchemy>=2.0",
-    "asyncpg",
-    "httpx",
-    "pydantic>=2",
     "python-dotenv",
-    "openai",
 ]
 
 [dependency-groups]
@@ -73,6 +74,9 @@ target-version = "py314"
 [tool.mypy]
 python_version = "3.14"
 strict = true
+
+[project.urls]
+Homepage = "https://???"
 EOF
 
 # Makefile
@@ -97,6 +101,12 @@ lint:
 
 format:
 	uv run ruff format .
+
+git_init:
+    git init
+    git add --all
+    git commit -m "init project"
+    git checkout -b develop
 EOF
 
 # Optional .gitignore
