@@ -116,9 +116,12 @@ git_init:
     git checkout -b develop
 
 build:
+    rm -rf dist
+	  rm -rf src/*.egg-info
     uv build
 
 publish:
+    @echo "INFO: Make sure that UV_PUBLISH_TOKEN env variable is set"
     uv publish
 EOF
 
