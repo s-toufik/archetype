@@ -39,6 +39,10 @@ EOF
 
 # pyproject.toml (uv-ready minimal config)
 cat > pyproject.toml <<EOF
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "$PROJECT_NAME"
 version = "0.1.0"
@@ -75,6 +79,9 @@ target-version = "py314"
 python_version = "3.14"
 strict = true
 
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [project.urls]
 Homepage = "https://???"
 EOF
@@ -107,6 +114,12 @@ git_init:
     git add --all
     git commit -m "init project"
     git checkout -b develop
+
+build:
+    uv build
+
+publish:
+    uv publish
 EOF
 
 # Optional .gitignore
