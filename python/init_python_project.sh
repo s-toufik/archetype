@@ -20,8 +20,8 @@ mkdir -p \
   src/domain/models \
   src/domain/services \
   src/application/use_cases \
-  src/ports/inbound \
-  src/ports/outbound \
+  src/application/ports/inbound \
+  src/application/ports/outbound \
   src/adapters/inbound \
   src/adapters/outbound \
   tests \
