@@ -17,13 +17,13 @@ cd "$PROJECT_NAME"
 
 # Core directories
 mkdir -p \
-  src/domain/models \
-  src/domain/services \
+  src/domain/model \
+  src/domain/service \
   src/application/use_cases \
-  src/application/ports/inbound \
-  src/application/ports/outbound \
-  src/adapters/inbound \
-  src/adapters/outbound \
+  src/application/port/inbound \
+  src/application/port/outbound \
+  src/adapter/inbound \
+  src/adapter/outbound \
   tests \
   docker \
   scripts
@@ -42,9 +42,6 @@ cp $SCRIPT_DIR/Makefile $TARGET_DIR/$PROJECT_NAME
 
 # gitignore
 cp $SCRIPT_DIR/gitignore $TARGET_DIR/$PROJECT_NAME/.gitignore
-
-# git platform CI/CD
-cp $SCRIPT_DIR/bitbucket-pipelines.yml $TARGET_DIR/$PROJECT_NAME
 
 # LICENSE
 cp $SCRIPT_DIR/MIT-LICENSE $TARGET_DIR/$PROJECT_NAME/LICENSE
