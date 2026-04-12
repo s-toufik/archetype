@@ -1,0 +1,21 @@
+file(GLOB_RECURSE LIB_SOURCES
+  "${CMAKE_CURRENT_SOURCE_DIR}/{{NAMESPACE}}/**/*.cpp"
+)
+
+if(LIB_SOURCES)
+  add_library({{NAMESPACE}}_lib ${LIB_SOURCES})
+
+  target_include_directories({{NAMESPACE}}_lib
+    PUBLIC ${PROJECT_SOURCE_DIR}/include
+  )
+
+  target_link_libraries({{NAMESPACE}}_lib
+    PUBLIC spdlog::spdlog
+  )
+endif()
+
+add_executable({{PROJECT_NAME}} main.cpp)
+
+if(LIB_SOURCES)
+  target_link_libraries({{PROJECT_NAME}} PRIVATE {{NAMESPACE}}_lib)
+endif()

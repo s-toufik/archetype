@@ -1,0 +1,9 @@
+build/
+.cache/
+*.o
+*.a
+*.so
+*.dylib
+compile_commands.json
+CMakeUserPresets.json
+.conan/

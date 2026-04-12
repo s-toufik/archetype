@@ -1,0 +1,19 @@
+file(GLOB_RECURSE TEST_SOURCES
+  "${CMAKE_CURRENT_SOURCE_DIR}/**/*.cpp"
+)
+
+enable_testing()
+find_package(GTest REQUIRED)
+
+if(TEST_SOURCES)
+  add_executable(unit_tests ${TEST_SOURCES})
+
+  target_link_libraries(unit_tests
+    PRIVATE
+      {{NAMESPACE}}_lib
+      GTest::gtest_main
+  )
+
+  include(GoogleTest)
+  gtest_discover_tests(unit_tests)
+endif()
