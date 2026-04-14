@@ -1,21 +1,18 @@
 file(GLOB_RECURSE LIB_SOURCES
+  CONFIGURE_DEPENDS
   "${CMAKE_CURRENT_SOURCE_DIR}/{{NAMESPACE}}/**/*.cpp"
 )
 
-if(LIB_SOURCES)
-  add_library({{NAMESPACE}}_lib ${LIB_SOURCES})
-
-  target_include_directories({{NAMESPACE}}_lib
-    PUBLIC ${PROJECT_SOURCE_DIR}/include
-  )
-
-  target_link_libraries({{NAMESPACE}}_lib
-    PUBLIC spdlog::spdlog
-  )
+if(NOT LIB_SOURCES)
+  message(FATAL_ERROR "No source files found in src/{{NAMESPACE}}")
 endif()
 
-add_executable({{PROJECT_NAME}} main.cpp)
+add_library({{NAMESPACE}}_lib ${LIB_SOURCES})
 
-if(LIB_SOURCES)
-  target_link_libraries({{PROJECT_NAME}} PRIVATE {{NAMESPACE}}_lib)
-endif()
+target_include_directories({{NAMESPACE}}_lib
+  PUBLIC ${PROJECT_SOURCE_DIR}/include
+)
+
+target_link_libraries({{NAMESPACE}}_lib
+  PUBLIC spdlog::spdlog
+)
