@@ -1,10 +1,9 @@
 BUILD_DIR=build
 PROFILE=default
-CONAN_TC=$(BUILD_DIR)/conan_toolchain.cmake
 
 .PHONY: setup build test run clean
 
-dependencies-install:
+setup:
 	conan install . \
 	  --output-folder=$(BUILD_DIR) \
 	  --build=missing \
@@ -12,29 +11,27 @@ dependencies-install:
 
 configure:
 	cmake -B $(BUILD_DIR) \
+	  -G Ninja \
 	  -DCMAKE_BUILD_TYPE=Release \
-	  -DCMAKE_TOOLCHAIN_FILE=$(CONAN_TC) \
-	  -G Ninja
+	  -DCMAKE_TOOLCHAIN_FILE=$(BUILD_DIR)/conan_toolchain.cmake
 
-git_init:
-	git init
-	git add --all
-	git commit -m "init project"
-	git checkout -b develop
-
-setup: dependencies-install configure 
-
-build:
+build: setup configure
 	cmake --build $(BUILD_DIR)
 
 test:
 	ctest --test-dir $(BUILD_DIR) --output-on-failure
 
 run:
-	./$(BUILD_DIR)/apps/{{PROJECT_NAME}}
+	./$(BUILD_DIR)/apps/pricelabcpp-core
 
 clean:
 	rm -rf $(BUILD_DIR)
+
+git_init:
+	git init
+	git add --all
+	git commit -m "init project"
+	git checkout -b develop
 
 format:
 	find apps src include tests \( -name "*.cpp" -o -name "*.hpp" \) -print0 | xargs -0 clang-format -i
