@@ -18,13 +18,15 @@ cd "$PROJECT_NAME"
 
 # Core directories
 mkdir -p \
+  src/$PACKAGE_NAME/domain/base \
   src/$PACKAGE_NAME/domain/model \
   src/$PACKAGE_NAME/domain/service \
-  src/$PACKAGE_NAME/application/use_cases \
+  src/$PACKAGE_NAME/application/use_case \
   src/$PACKAGE_NAME/application/port/inbound \
   src/$PACKAGE_NAME/application/port/outbound \
   src/$PACKAGE_NAME/adapter/inbound \
   src/$PACKAGE_NAME/adapter/outbound \
+  src/$PACKAGE_NAME/bootstrap \
   tests \
   docker \
   scripts
