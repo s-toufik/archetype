@@ -2,7 +2,7 @@
 
 This architecture follows a **pragmatic Hexagonal Architecture with strict dependency inversion and fully isolated infrastructure adapters** approach combined with **Clean Architecture principles**.
 
-The application core is fully isolated from external technologies, frameworks, and infrastructure concerns. All interactions with external systems are expressed through explicit contracts (ports) owned by the application layer, while concrete implementations are delegated to adapters at the system boundaries (zero debts).
+The application core is fully isolated from external technologies, frameworks, and infrastructure concerns. All interactions with external systems are expressed through explicit contracts (ports) owned by the application layer, while concrete implementations are delegated to adapters at the system boundaries.
 
 The architecture distinguishes between:
 
