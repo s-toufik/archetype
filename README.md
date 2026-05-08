@@ -55,4 +55,5 @@ The C++ and Rust architectural patterns are similar to the Python directory stru
     │ │     └── service/
     └── tests
 
+> [!NOTE]
 > This layered structure is a conceptual representation intended to communicate architectural boundaries clearly. In practice, architectural design is not defined by directory structure but by dependency direction, ownership of abstractions, and enforcement of boundaries at the code level. The folder organization is used here as a documentation tool to improve readability, onboarding, and shared understanding of the system’s design principles.
