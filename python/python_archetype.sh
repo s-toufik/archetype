@@ -26,6 +26,7 @@ mkdir -p \
   src/$PACKAGE_NAME/application/port/outbound \
   src/$PACKAGE_NAME/adapter/inbound \
   src/$PACKAGE_NAME/adapter/outbound \
+  src/$PACKAGE_NAME/infrastructure \
   src/$PACKAGE_NAME/bootstrap \
   tests \
   docker \
