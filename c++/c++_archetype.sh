@@ -18,13 +18,16 @@ mkdir -p \
   include/$NAMESPACE/domain/service \
   include/$NAMESPACE/application/port/inbound \
   include/$NAMESPACE/application/port/outbound \
-  include/$NAMESPACE/application/usecase
+  include/$NAMESPACE/application/usecase \
+  include/$NAMESPACE/infrastructure
 
 mkdir -p \
   src/$NAMESPACE/domain/service \
   src/$NAMESPACE/application/usecase \
   src/$NAMESPACE/adapter/inbound \
-  src/$NAMESPACE/adapter/outbound
+  src/$NAMESPACE/adapter/outbound \
+  src/$NAMESPACE/infrastructure
+
 
 mkdir -p apps/main
 
