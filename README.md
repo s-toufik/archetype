@@ -40,20 +40,23 @@ The C++ and Rust architectural patterns are similar to the Python directory stru
     ├── pyproject.toml
     ├── src/
     │ ├── <project/module name>
-    │ │ ├── adapter/ 
-    │ │ │ │ ├── inbound/
-    │ │ │ │ └── outbound/
-    │ │ ├── application/ 
-    │ │ │ ├── port/
-    │ │ │ │ ├── inbound/
-    │ │ │ │ └── outbound/
-    │ │ │ └── use_case/
-    │ │ ├── bootstrap/ 
-    │ │ ├── infrastructure/
-    │ │ └── domain/
-    │ │     ├── base/
-    │ │     ├── model/
-    │ │     └── service/
+    │ │ ├── adapter/              <-│ Business hex
+    │ │ │ │ ├── inbound/            │
+    │ │ │ │ └── outbound/           │
+    │ │ ├── application/            │  
+    │ │ │ ├── port/                 │  
+    │ │ │ │ ├── inbound/            │
+    │ │ │ │ └── outbound/           │
+    │ │ │ └── use_case/             │
+    │ │ ├── bootstrap/              │
+    │ │ ├── domain/               <-│
+    │ │ │   ├── base/
+    │ │ │   ├── model/
+    │ │ │   └── service/
+    │ │ └── infrastructure/       <-│ Technical hex
+    │ │ │ ├── <concept>/            │  
+    │ │ │ │ ├── port/               │
+    │ │ │ │ └── adapter/          <-│
     └── tests
 
 > [!NOTE]
